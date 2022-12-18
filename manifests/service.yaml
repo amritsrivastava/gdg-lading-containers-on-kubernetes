@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: angular-app
+  namespace: frontend
+spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: web
+      port: 5000
+      protocol: TCP
+      targetPort: 5000
+  selector:
+    app: angular
+  sessionAffinity: None
+  type: ClusterIP
